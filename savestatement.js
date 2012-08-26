@@ -59,12 +59,12 @@ function tryReady(time_elapsed) {
 				
 				switch (cellCount){
 					case 0: // Transaction date. Nice and easy...
-						rowData.date = $(this).attr("innerHTML").trim();
+						rowData.date = $(this).html().trim();
 					break;
 					
 					case 1:
 						// The description, save it.
-						var description = $(this).attr("innerHTML");
+						var description = $(this).html();
 						if (description == "BROUGHT FORWARD" || description == "*LAST STATEMENT*") {
 							// This is a balance forwarding row, ignore it.
 							// console.log("No description, ignoring this row...");
@@ -80,7 +80,7 @@ function tryReady(time_elapsed) {
 					
 					case 2:
 						// Check if there's a "paid in" or positive entry
-						value = $(this).attr("innerHTML").trim();
+						value = $(this).html().trim();
 						value = value.replace("&nbsp;", "");
 						if (value !== "") {
 							// console.log("Value: " + value);
@@ -90,7 +90,7 @@ function tryReady(time_elapsed) {
 					
 					case 3:
 						// Check if there's a "paid out" or negative entry
-						value = $(this).attr("innerHTML").trim();
+						value = $(this).html().trim();
 						value = value.replace("&nbsp;", "");
 						if (value !== "") {
 							value = "-" + value;
