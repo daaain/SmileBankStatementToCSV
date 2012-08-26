@@ -428,7 +428,7 @@ load.tryReady = function(time_elapsed) {
 		previousButton = $('a[title*="view previous statememts"]').parent('td');
 	}
 	previousButton.append(" <span id='clippy'></span>");
-	$("#clippy").flashembed({src:"https://github.com/mojombo/clippy/blob/master/build/clippy.swf?raw=true", height:"20px", width:"571px"}, {text:escape(csv)});
+	$("#clippy").flashembed({src:"https://raw.github.com/mojombo/clippy/master/build/clippy.swf", height:"20px", width:"571px"}, {text:escape(csv)});
 	
   }
 
