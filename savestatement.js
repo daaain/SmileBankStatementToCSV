@@ -126,26 +126,26 @@ function tryReady(time_elapsed) {
 		
 		// show csv content in fancybox
 		$.fancybox({
-			'content' : csv
+			'content' : csv,
+			afterShow: function() {
+				// select text for added convenience
+				fnSelect($('.fancybox-inner').get(0));
+			}
 		});
-
-		// select text for added convenience
-		fnSelect($('.fancybox-inner').get(0));
 	}
 }
 
 // text selection
-function fnSelect(objId) {
+function fnSelect(element) {
 	fnDeSelect();
 	var range;
 	if (document.selection) {
 		range = document.body.createTextRange();
-		range.moveToElementText(document.getElementById(objId));
+		range.moveToElementText(element);
 		range.select();
-	}
-	else if (window.getSelection) {
+	} else if (window.getSelection) {
 		range = document.createRange();
-		range.selectNode(document.getElementById(objId));
+		range.selectNode(element);
 		window.getSelection().addRange(range);
 	}
 }
