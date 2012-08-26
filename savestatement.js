@@ -1,37 +1,31 @@
-// Init
+// Init variables
 var csv = "";
 var entries = [];
 
-//
 // Thanks to http://www.squidoo.com/load-jQuery-dynamically
-//
-
-load = function() {
-  load.getScript("https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js");
-  load.getScript("https://raw.github.com/fancyapps/fancyBox/master/source/jquery.fancybox.pack.js");
-  load.tryReady(0); // We will write this function later. It's responsible for waiting until jQuery loads before using it.
-};
+function load() {
+	getScript("https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js");
+	getScript("https://raw.github.com/fancyapps/fancyBox/master/source/jquery.fancybox.pack.js");
+	tryReady(0); // We will write this function later. It's responsible for waiting until jQuery loads before using it.
+}
 
 // dynamically load any javascript file.
-load.getScript = function(filename) {
-	var script = document.createElement('script');
+function getScript(filename) {
+	var script = document.createElement('scr'+'ipt');
 	script.setAttribute("type","text/javascript");
 	script.setAttribute("src", filename);
-	if (typeof script !== "undefined") {
-		document.getElementsByTagName("head")[0].appendChild(script);
-	}
-};
+	document.getElementsByTagName("head")[0].appendChild(script);
+}
 
-load.tryReady = function(time_elapsed) {
-	// Continually polls to see if jQuery is loaded.
-	if (typeof jQuery === "undefined" && typeof jQuery.fancybox === "undefined") { // if jQuery isn't loaded yet...
-		if (time_elapsed <= 5000) { // and we havn't given up trying...
-			setTimeout("load.tryReady(" + (time_elapsed + 200) + ")", 200); // set a timer to check again in 200 ms.
+function tryReady(time_elapsed) {
+	// Continually polls to see if jQuery and fancybox are loaded.
+	if (typeof jQuery === "undefined" || !('fancybox' in window['jQuery'])) { // if jQuery isn't loaded yet...
+		if (time_elapsed <= 5000) { // and we haven't given up trying...
+			setTimeout("tryReady(" + (time_elapsed + 200) + ")", 200); // set a timer to check again in 200 ms.
 		} else {
-			alert("Timed out while loading jQuery.");
+			alert("Timed out while loading :( Try again?");
 		}
 	} else {
-
 		// JQuery loaded - let's get cracking...
 		
 		//
@@ -138,7 +132,7 @@ load.tryReady = function(time_elapsed) {
 		// select text for added convenience
 		fnSelect($('.fancybox-inner').get(0));
 	}
-};
+}
 
 // text selection
 function fnSelect(objId) {
