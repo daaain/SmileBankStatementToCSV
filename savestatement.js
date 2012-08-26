@@ -1,9 +1,19 @@
 // Init variables
 var csv = "";
 var entries = [];
+var head  = document.getElementsByTagName('head')[0];
 
 // Thanks to http://www.squidoo.com/load-jQuery-dynamically
 function load() {
+	// load CSS for fancybox
+	var link  = document.createElement('link');
+	link.rel  = 'stylesheet';
+	link.type = 'text/css';
+	link.href = 'https://raw.github.com/fancyapps/fancyBox/master/source/jquery.fancybox.css';
+	link.media = 'all';
+	head.appendChild(link);
+
+	// load JS libraries
 	getScript("https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js");
 	getScript("https://raw.github.com/fancyapps/fancyBox/master/source/jquery.fancybox.pack.js");
 	tryReady(0); // We will write this function later. It's responsible for waiting until jQuery loads before using it.
@@ -14,7 +24,7 @@ function getScript(filename) {
 	var script = document.createElement('scr'+'ipt');
 	script.setAttribute("type","text/javascript");
 	script.setAttribute("src", filename);
-	document.getElementsByTagName("head")[0].appendChild(script);
+	head.appendChild(script);
 }
 
 function tryReady(time_elapsed) {
