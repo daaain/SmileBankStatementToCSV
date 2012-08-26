@@ -14,8 +14,10 @@ function load() {
 	head.appendChild(link);
 
 	// load JS libraries
-	getScript("https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js");
-	getScript("https://raw.github.com/fancyapps/fancyBox/master/source/jquery.fancybox.pack.js");
+	if (typeof jQuery === "undefined" || !('fancybox' in window['jQuery'])) {
+		getScript("https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js");
+		getScript("https://raw.github.com/fancyapps/fancyBox/master/source/jquery.fancybox.pack.js");
+	}
 	tryReady(0); // We will write this function later. It's responsible for waiting until jQuery loads before using it.
 }
 
@@ -128,7 +130,7 @@ function tryReady(time_elapsed) {
 		for (i = 0; i < entries.length; i++) {
 			var currentRow = entries[i];
 			if (!currentRow.ignore) {
-				csv += currentRow.date + "," + currentRow.value.replace("£", "") + ",\"" + currentRow.description + "\"\n";
+				csv += currentRow.date + "," + currentRow.value.replace("£", "") + ",\"" + currentRow.description + "\"<br />";
 			}
 		}
 		
@@ -137,6 +139,7 @@ function tryReady(time_elapsed) {
 		// show csv content in fancybox
 		$.fancybox({
 			'content' : csv,
+			height: 300,
 			afterShow: function() {
 				// select text for added convenience
 				fnSelect($('.fancybox-inner').get(0));
