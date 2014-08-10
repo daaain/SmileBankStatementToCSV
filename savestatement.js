@@ -9,14 +9,14 @@ function load() {
 	var link  = document.createElement('link');
 	link.rel  = 'stylesheet';
 	link.type = 'text/css';
-	link.href = 'https://raw.github.com/fancyapps/fancyBox/master/source/jquery.fancybox.css';
+	link.href = 'https://rawgit.com/fancyapps/fancyBox/master/source/jquery.fancybox.css';
 	link.media = 'all';
 	head.appendChild(link);
 
 	// load JS libraries
 	if (typeof jQuery === "undefined" || !('fancybox' in window['jQuery'])) {
 		getScript("https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js");
-		getScript("https://raw.github.com/fancyapps/fancyBox/master/source/jquery.fancybox.pack.js");
+		getScript("https://rawgit.com/fancyapps/fancyBox/master/source/jquery.fancybox.pack.js");
 	}
 	tryReady(0); // We will write this function later. It's responsible for waiting until jQuery loads before using it.
 }
@@ -130,7 +130,7 @@ function tryReady(time_elapsed) {
 		for (i = 0; i < entries.length; i++) {
 			var currentRow = entries[i];
 			if (!currentRow.ignore) {
-				csv += currentRow.date + "," + currentRow.value.replace("£", "") + ",\"" + currentRow.description + "\"<br />";
+				csv += currentRow.date + "," + currentRow.value.replace("Â£", "") + ",\"" + currentRow.description + "\"<br />";
 			}
 		}
 		
