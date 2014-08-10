@@ -3,6 +3,8 @@ SmileBankStatementToCSV
 
 A simple script to scrape statement data from Smile Bank's online banking interface for manual exporting.
 
+UPDATE: the old URL is broken as Github doesn't allow hotlinking scripts, so if the bookmarklet doesn't work any more just delete it and set it up again!
+
 Get Bookmarklet on the project page: http://daaain.github.com/SmileBankStatementToCSV/
 
 Just log in to Smile and once you're on a statement page (works for both current and older ones) click on the bookmarklet. If you're curious (or want to host this yourself) this is the bookmarklet code:
