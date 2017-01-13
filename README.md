@@ -1,6 +1,13 @@
 SmileBankStatementToCSV
 =======================
 
+DEPRECATED
+----------
+
+Smile now has a CSV export on its web UI and this script is not tested any more, so consider it broken. But of course the scraping method still works, so feel free to fork and use for other purposes.
+
+___
+
 A simple script to scrape statement data from Smile Bank's online banking interface for manual exporting.
 
 UPDATE: the old URL is broken as Github doesn't allow hotlinking scripts, so if the bookmarklet doesn't work any more just delete it and set it up again!
